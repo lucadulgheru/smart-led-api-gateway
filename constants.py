@@ -11,6 +11,7 @@ API_ENDPOINT_LED = "/led"
 API_ACTION_ON = "/on"
 API_ACTION_OFF = "/off"
 API_ACTION_COLOR = "/color"
+API_ACTION_TOGGLE = "/toggle"
 
 # API endpoint variables
 API_VAR_LED_ID = "/<led_id>"
