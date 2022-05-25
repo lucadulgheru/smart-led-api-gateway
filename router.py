@@ -15,6 +15,7 @@ LED_OFF_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_VAR_LED_ID + API_ACTION
 LED_TOGGLE_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_ACTION_TOGGLE + API_VAR_LED_ID
 CHANGE_COLOR_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_VAR_LED_ID + API_ACTION_COLOR
 PING_ENDPOINT = API_BASE_URL + API_ENDPOINT_PING
+EVENTS_ENDPOINT = API_BASE_URL + API_ENDPOINT_EVENTS
 RECEIVE_DATA_ENDPOINT = API_BASE_URL + ESP32_RECEIVE_DATA
 
 app = flask.Flask(__name__)
@@ -78,6 +79,13 @@ def change_color(led_id, color_code):
 @cross_origin()
 def ping_board():
 	response = ping_esp32()
+	return response
+
+# Get the events logged by the ESP32
+@app.route(EVENTS_ENDPOINT, methods=["GET"])
+@cross_origin()
+def events():
+	response = get_events()
 	return response
 
 app.run()

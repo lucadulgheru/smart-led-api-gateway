@@ -5,6 +5,7 @@ from constants import *
 ESP32_LED_API = ESP32_BASE_PATH + API_ENDPOINT_LED
 ESP32_PING_API = ESP32_BASE_PATH + API_ENDPOINT_PING
 ESP32_ENUMERATE_API = ESP32_BASE_PATH + API_ENDPOINT_ENUMERATE
+ESP32_EVENTS_API = ESP32_BASE_PATH + API_ENDPOINT_EVENTS
 
 # TODO Add toggle through ID
 
@@ -30,4 +31,8 @@ def get_available_leds():
 
 def ping_esp32():
 	response = requests.get(ESP32_PING_API).text
+	return json.loads(response)
+
+def get_events():
+	response = requests.get(ESP32_EVENTS_API).text
 	return json.loads(response)

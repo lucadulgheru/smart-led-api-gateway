@@ -6,6 +6,7 @@ API_VERSION = "/v1"
 API_ENDPOINT_PING = "/ping"
 API_ENDPOINT_ENUMERATE = "/enumerate"
 API_ENDPOINT_LED = "/led"
+API_ENDPOINT_EVENTS = "/events"
 
 # API endpoint actions
 API_ACTION_ON = "/on"
