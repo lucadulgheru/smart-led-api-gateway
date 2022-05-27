@@ -16,6 +16,7 @@ API_ACTION_TOGGLE = "/toggle"
 
 # API endpoint variables
 API_VAR_LED_ID = "/<led_id>"
+API_VAR_COLOR_CODE = "?color_code="
 
 # ESP32 Base info
 ESP32_BASE_PATH = "http://192.168.0.10"

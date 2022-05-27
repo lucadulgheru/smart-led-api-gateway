@@ -13,7 +13,7 @@ ENUMERATION_ENDPOINT = API_BASE_URL + API_ENDPOINT_ENUMERATE
 LED_ON_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_VAR_LED_ID + API_ACTION_ON
 LED_OFF_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_VAR_LED_ID + API_ACTION_OFF
 LED_TOGGLE_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_ACTION_TOGGLE + API_VAR_LED_ID
-CHANGE_COLOR_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_VAR_LED_ID + API_ACTION_COLOR
+CHANGE_COLOR_ENDPOINT = API_BASE_URL + API_ENDPOINT_LED + API_ACTION_COLOR + API_VAR_LED_ID
 PING_ENDPOINT = API_BASE_URL + API_ENDPOINT_PING
 EVENTS_ENDPOINT = API_BASE_URL + API_ENDPOINT_EVENTS
 RECEIVE_DATA_ENDPOINT = API_BASE_URL + ESP32_RECEIVE_DATA
@@ -49,28 +49,12 @@ def led_toggle(led_id):
 	response = toggle_led(led_id)
 	return response
 
-# LED on endpoint
-@app.route(LED_ON_ENDPOINT, methods=["GET"])
-@cross_origin()
-def led_on(led_id):
-	response = ""
-	if led_id == '0':
-		response = toggle_led_on(led_id)
-	return response
-
-# LED off endpoint
-@app.route(LED_OFF_ENDPOINT, methods=["GET"])
-@cross_origin()
-def led_off(led_id):
-	response = ""
-	if led_id == '0':
-		response = toggle_led_off(led_id)
-	return response
-
 # Change LED color endpoint
 @app.route(CHANGE_COLOR_ENDPOINT, methods=["GET"])
 @cross_origin()
-def change_color(led_id, color_code):
+def change_color(led_id):
+	color_code = request.args.to_dict()["color_code"]
+	print(color_code)
 	response = apply_led_color_change(led_id, color_code)
 	return response
 
